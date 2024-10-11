@@ -75,12 +75,20 @@
     ['see what the company is up to', 'reading press releases', 1, 'see what the company is up to through reading press releases'],
     ['see what the company is up to', 'reviewing company news and information', 1, 'see what the company is up to through reviewing company news'],
 ]);
+            var colors = [
+                "#cf4b00", "#ec6602", "#f9b591", "#fdddcb", "#02787d", "#009999", 
+                "#87d2d2", "#c8e6e6", "#3abfed", "#9ddff6", "#ceeffb", "#7a162d", 
+                "#c69b9e", "#e9d1d4", "#2b2483", "#9592c1", "#cac8e0", "#d9001d", 
+                "#e7001d", "#f3808e", "#f9bfc7", "#197c3a", "#009a38", "#80cd9c", 
+                "#bfe6cd", "#ffd200", "#ffe980", "#fff3bf"
+            ];
 
             var options = {
                 width: 1200,
                 height: 3000,
                 sankey: {
                     node: {
+                        colors: colors,
                         nodePadding: 30,
                         interactivity: true,
                         label: {
