@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sankey Diagram with Google Charts</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+        .sankey-node-label {
+            white-space: pre-wrap; /* Allows line breaks */
+            width: 40px; /* Adjust width as needed */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['sankey']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'From');
+            data.addColumn('string', 'To');
+            data.addColumn('number', 'Weight');
+            data.addColumn({type: 'string', role: 'tooltip', 'p': {'html': true}});
+            data.addRows([
+                ['Direct traffic', 'SHS.com', 1, 'Direct traffic to SHS.com: 5'],
+                ['Organic Search', 'SHS.com', 1, 'Organic Search to SHS.com: 7'],
+                ['Paid Media', 'SHS.com', 1, 'Paid Media to SHS.com: 6'],
+                ['Social Media', 'SHS.com', 1, 'Social Media to SHS.com: 2'],
+                ['E-mail', 'SHS.com', 1, 'E-mail to SHS.com: 9'],
+            
+                ['SHS.com', 'make an informed purchasing decision', 5, 'SHS.com to make an informed purchasing decision: 29'],
+                ['make an informed purchasing decision', 'look for documents', 1, 'make an informed purchasing decision to look for product pages: 29'],
+                ['make an informed purchasing decision', 'understand how SHS is different from competitor products', 1, 'make an informed purchasing decision to look for product pages: 29'],
+                ['make an informed purchasing decision', 'understand why SHS is better for me', 1, 'make an informed purchasing decision to look for product pages: 29'],
+                ['make an informed purchasing decision', 'look for product pages', 2, 'make an informed purchasing decision to look for product pages: 29'],
+                ['look for product pages', 'find product demos', 1, 'tooltip'],
+                ['look for product pages', 'read tech specs', 1, 'tooltip'],
+                ['look for documents', 'find product demos', 1, 'tooltip'],
+                ['look for documents', 'read tech specs', 1, 'tooltip'],
+                ['SHS.com', 'look for a job', 1, 'tooltip'],
+                ['look for a job', 'find job listings relevant to me', 1, 'tooltip'],
+                ['look for a job', 'learn about company mission and values', 1, 'tooltip'],
+            ]);
+
+            var options = {
+                width: 1200,
+                height: 1200,
+                sankey: {
+                    node: {
+                        nodePadding: 100,
+                        interactivity: true,
+                        label: {
+                            fontSize: 12,
+                            color: '#000',
+                            bold: false,
+                            italic: false,
+                            fontName: 'Arial',
+                            // Custom formatter to add line breaks
+                            formatter: function(label) {
+                                return label.replace(/(.{20})/g, "$1\n");
+                            }
+                        }
+                    },
+                    link: { colorMode: 'gradient' },
+                    iterations: 100
+                },
+                tooltip: { isHtml: true }
+            };
+
+            var chart = new google.visualization.Sankey(document.getElementById('sankey_chart'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <h1>Sankey Diagram Example</h1>
+    <div id="sankey_chart"></div>
+</body>
+</html>
