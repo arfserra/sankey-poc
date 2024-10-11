@@ -12,6 +12,18 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        div.google-visualization-tooltip {
+            background-color: #f9f9f9;
+            padding: 4px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: #333333;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center the text horizontally */
+            display: flex;
+            align-items: center; /* Center the text vertically */
+            justify-content: center; /* Center the text horizontally */
+        }
     </style>
     <script type="text/javascript">
         google.charts.load('current', {'packages':['sankey']});
@@ -22,7 +34,7 @@
             data.addColumn('string', 'From');
             data.addColumn('string', 'To');
             data.addColumn('number', 'Weight');
-            data.addColumn({type: 'string', role: 'tooltip', 'p': {'html': true}});
+            data.addColumn({'type': 'string', 'role': 'tooltip', 'p': {'html': true}});
             data.addRows([
 
     ['Direct traffic', 'SHS.com', 6, 'Direct traffic to SHS.com'],
