@@ -3,119 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sankey Diagram with Google Charts</title>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <style>
-        .sankey-node-label {
-            white-space: pre-wrap; /* Allows line breaks */
-            width: 40px; /* Adjust width as needed */
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    </style>
-    <script type="text/javascript">
-        google.charts.load('current', {'packages':['sankey']});
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'From');
-            data.addColumn('string', 'To');
-            data.addColumn('number', 'Weight');
-            data.addColumn({type: 'string', role: 'tooltip', 'p': {'html': true}});
-            data.addRows([
-
-    ['Direct traffic', 'SHS.com', 6, 'Direct traffic to SHS.com'],
-    ['Organic Search', 'SHS.com', 6, 'Organic Search to SHS.com'],
-    ['Paid Media', 'SHS.com', 6, 'Paid Media to SHS.com'],
-    ['Social Media', 'SHS.com', 4, 'Social Media to SHS.com'],
-    ['E-mail', 'SHS.com', 4, 'E-mail to SHS.com'],
-
-    ['SHS.com', 'check the company financial status', 3, 'SHS.com to check the company financial status'],
-    ['check the company financial status', 'see stock performance', 1, 'check the company financial status to see stock performance'],
-    ['check the company financial status', 'need financial reports and filings', 1, 'check the company financial status to need financial reports and filings'],
-    ['check the company financial status', 'look for upcoming financial events', 1, 'check the company financial status to look for upcoming financial events'],
-
-    ['SHS.com', 'look for a job', 2, 'SHS.com to look for a job'],
-    ['look for a job', 'find job listings relevant to me', 1, 'look for a job to find job listings relevant to me'],
-    ['look for a job', 'learn about company mission and values', 1, 'look for a job to learn about company mission and values'],
-
-    ['SHS.com', 'keep educating myself within my clinical field', 3, 'SHS.com to keep educating myself within my clinical field'],
-    ['keep educating myself within my clinical field', 'find perspectives and findings related to my specialty', 1, 'keep educating myself to find perspectives and findings'],
-    ['keep educating myself within my clinical field', 'attend a trade event', 1, 'keep educating myself to attend a trade event'],
-    ['keep educating myself within my clinical field', 'learn about evolutions with new machinery in my specialty', 1, 'keep educating myself to learn about machinery evolutions'],
-
-    ['SHS.com', 'make an informed purchasing decision', 6, 'SHS.com to make an informed purchasing decision'],
-    ['make an informed purchasing decision', 'look for product pages', 2, 'make an informed purchasing decision to look for product pages'],
-    ['make an informed purchasing decision', 'look for documents', 2, 'make an informed purchasing decision to look for documents'],
-    ['make an informed purchasing decision', 'understand how SHS is different from competitor products', 1, 'make an informed purchasing decision to understand differentiation'],
-    ['make an informed purchasing decision', 'understand why SHS is better for me', 1, 'make an informed purchasing decision to understand why SHS is better'],
-    ['look for product pages', 'find product demos', 1, 'look for product pages to find product demos'],
-    ['look for product pages', 'read technical specifications', 1, 'look for product pages to read technical specifications'],
-    ['look for documents', 'find product demos', 1, 'look for documents to find product demos'],
-    ['look for documents', 'read technical specifications', 1, 'look for documents to read technical specifications'],
-
-    ['SHS.com', 'use my products and services better', 5, 'SHS.com to use my products and services better'],
-    ['use my products and services better', 'read in-depth information about my products and services', 1, 'use my products and services better to read information'],
-    ['use my products and services better', 'be inspired by other users like me', 1, 'use my products and services better to be inspired by other users'],
-    ['use my products and services better', 'register for online training', 1, 'use my products and services better to register for training'],
-    ['use my products and services better', 'request bespoke training', 1, 'use my products and services better to request bespoke training'],
-    ['use my products and services better', 'review my service agreements', 1, 'use my products and services better to review service agreements'],
-
-    ['SHS.com', 'keep my product running', 3, 'SHS.com to keep my product running'],
-    ['keep my product running', 'understand service offerings', 1, 'keep my product running to understand service offerings'],
-    ['keep my product running', 'submit a service ticket', 1, 'keep my product running to submit a service ticket'],
-    ['keep my product running', 'review a service ticket', 1, 'keep my product running to review a service ticket'],
-
-    ['SHS.com', 'have an informed opinion about SHS', 4, 'SHS.com to have an informed opinion about SHS'],
-    ['have an informed opinion about SHS', 'learn about the company', 2, 'have an informed opinion to learn about the company'],
-    ['learn about the company', 'reading insights and perspectives', 1, 'learn about the company through reading insights'],
-    ['learn about the company', 'reading company vision and mission', 1, 'learn about the company through reading company vision'],
-    ['have an informed opinion about SHS', 'see what the company is up to', 2, 'have an informed opinion to see company updates'],
-    ['see what the company is up to', 'reading press releases', 1, 'see what the company is up to through reading press releases'],
-    ['see what the company is up to', 'reviewing company news and information', 1, 'see what the company is up to through reviewing company news'],
-]);
-            var colors = [
-                "#cf4b00", "#ec6602", "#f9b591", "#fdddcb", "#02787d", "#009999", 
-                "#87d2d2", "#c8e6e6", "#3abfed", "#9ddff6", "#ceeffb", "#7a162d", 
-                "#c69b9e", "#e9d1d4", "#2b2483", "#9592c1", "#cac8e0", "#d9001d", 
-                "#e7001d", "#f3808e", "#f9bfc7", "#197c3a", "#009a38", "#80cd9c", 
-                "#bfe6cd", "#ffd200", "#ffe980", "#fff3bf"
-            ];
-
-            var options = {
-                width: 1200,
-                height: 3000,
-                sankey: {
-                    node: {
-                        colors: colors,
-                        nodePadding: 30,
-                        interactivity: true,
-                        label: {
-                            fontSize: 12,
-                            color: '#000',
-                            bold: false,
-                            italic: false,
-                            fontName: 'Arial',
-                            // Custom formatter to add line breaks
-                            formatter: function(label) {
-                                return label.replace(/(.{20})/g, "$1\n");
-                            }
-                        }
-                    },
-                    link: { colorMode: 'gradient' },
-                    iterations: 100
-                },
-                tooltip: { isHtml: true }
-            };
-
-            var chart = new google.visualization.Sankey(document.getElementById('sankey_chart'));
-            chart.draw(data, options);
-        }
-    </script>
+    <title>Sankey Diagram with Plotly.js</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
     <h1>Sankey Diagram Example</h1>
-    <div id="sankey_chart"></div>
+    <div id="myDiv" style="width:100%;height:1200px;"></div>
+    <script>
+        var data = {
+            type: "sankey",
+            orientation: "h",
+            node: {
+                pad: 15,
+                thickness: 20,
+                line: {
+                    color: "black",
+                    width: 0
+                },
+                label: [
+                    "Direct traffic", "Organic Search", "Paid Media", "Social Media", "E-mail",
+                    "SHS.com", "Check Financial Status", "See Stock Performance", "Need Financial Reports",
+                    "Look for Upcoming Financial Events", "Look for a Job", "Find Job Listings",
+                    "Learn About Mission and Values", "Clinical Education", "Find Related Perspectives",
+                    "Attend Trade Event", "Learn About New Machinery", "Informed Purchase Decision",
+                    "Look for Product Pages", "Look for Documents", "SHS vs Competitors", "Why SHS is Better",
+                    "Find Product Demos", "Read Technical Specifications", "Better Use of Products",
+                    "Read In-Depth Product Info", "Be Inspired by Others", "Register for Online Training",
+                    "Request Bespoke Training", "Review Service Agreements", "Keep My Product Running",
+                    "Understand Service Offerings", "Submit a Service Ticket", "Review a Service Ticket",
+                    "Informed Opinion about SHS", "Learn About the Company", "Read Insights and Perspectives",
+                    "Read Vision and Mission", "See Company Updates", "Read Press Releases",
+                    "Review Company News"
+                ],
+                color: [
+                    "#cf4b00", "#ec6602", "#f9b591", "#fdddcb", "#02787d",
+                    "#009999", "#87d2d2", "#c8e6e6", "#3abfed", "#9ddff6",
+                    "#ceeffb", "#7a162d", "#c69b9e", "#e9d1d4", "#2b2483",
+                    "#9592c1", "#cac8e0", "#d9001d", "#e7001d", "#f3808e",
+                    "#f9bfc7", "#197c3a", "#009a38", "#80cd9c", "#bfe6cd",
+                    "#ffd200", "#ffe980", "#fff3bf"
+                ],
+                align: "right",
+            },
+            link: {
+                source: [
+                    0, 1, 2, 3, 4,
+                    5, 6, 6, 6,
+                    5, 10, 10,
+                    5, 13, 13, 13,
+                    5, 17, 17, 17, 17,
+                    18, 18, 19, 19,
+                    5, 24, 24, 24, 24, 24,
+                    5, 30, 30, 30,
+                    5, 34, 34, 34,
+                    34, 38, 38
+                ],
+                target: [
+                    5, 5, 5, 5, 5,
+                    6, 7, 8, 9,
+                    10, 11, 12,
+                    13, 14, 15, 16,
+                    17, 18, 19, 20, 21,
+                    22, 23, 22, 23,
+                    24, 25, 26, 27, 28, 29,
+                    30, 31, 32, 33,
+                    34, 35, 36, 37,
+                    38, 39, 40
+                ],
+                value: [
+                    6, 4, 4, 4, 4,
+                    3, 1, 1, 1,
+                    2, 1, 1,
+                    3, 1, 1, 1,
+                    4, 1, 1, 1, 1,
+                    1, 1, 1, 1,
+                    5, 1, 1, 1, 1, 1,
+                    3, 1, 1, 1,
+                    2, 2, 1, 1,
+                    2, 1, 1
+                ],
+                opacity: 0.3,
+            }
+        };
+
+        layout = {}
+
+        Plotly.newPlot('myDiv', [data], layout);
+    </script>
 </body>
 </html>
