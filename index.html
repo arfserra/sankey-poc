@@ -64,7 +64,6 @@
     ['make an informed purchasing decision', 'understand why SHS is better for me', 1, 'make an informed purchasing decision to understand why SHS is better'],
     ['look for product pages', 'find product demos', 1, 'look for product pages to find product demos'],
     ['look for product pages', 'read technical specifications', 1, 'look for product pages to read technical specifications'],
-    ['look for documents', 'find product demos', 1, 'look for documents to find product demos'],
     ['look for documents', 'read technical specifications', 1, 'look for documents to read technical specifications'],
 
     ['SHS.com', 'use my products and services better', 5, 'SHS.com to use my products and services better'],
@@ -96,11 +95,12 @@
             ];
 
             var options = {
-                width: 1200,
+                width: 800,
                 height: 3000,
                 sankey: {
                     node: {
                         colors: colors,
+                        labelPadding: 10,
                         nodePadding: 30,
                         interactivity: true,
                         label: {
@@ -109,14 +109,15 @@
                             bold: false,
                             italic: false,
                             fontName: 'Arial',
-                            // Custom formatter to add line breaks
-                            formatter: function(label) {
-                                return label.replace(/(.{20})/g, "$1\n");
-                            }
                         }
                     },
-                    link: { colorMode: 'gradient' },
-                    iterations: 100
+                    link: { 
+                        color: {
+                            fill: '#c8e6e6',
+                            fillOpacity: 0.1,
+                        },
+                    },
+                    iterations: 5000,
                 },
                 tooltip: { isHtml: true }
             };
@@ -127,7 +128,7 @@
     </script>
 </head>
 <body>
-    <h1>Sankey Diagram Example</h1>
+    <h1>Siemens Healthineers Intent Map</h1>
     <div id="sankey_chart"></div>
 </body>
 </html>
