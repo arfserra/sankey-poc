@@ -43,19 +43,34 @@
     ['Social Media', 'SHS.com', 4, 'Social Media to SHS.com'],
     ['E-mail', 'SHS.com', 4, 'E-mail to SHS.com'],
 
-    ['SHS.com', 'check the company financial status', 3, 'SHS.com to check the company financial status'],
-    ['check the company financial status', 'see stock performance', 1, 'check the company financial status to see stock performance'],
-    ['check the company financial status', 'need financial reports and filings', 1, 'check the company financial status to need financial reports and filings'],
-    ['check the company financial status', 'look for upcoming financial events', 1, 'check the company financial status to look for upcoming financial events'],
+    ['SHS.com', 'check the company financial status', 3, 'tooltip'],
+    ['check the company financial status', 'see stock performance', 1, 'tooltip'],
+    ['check the company financial status', 'need financial reports and filings', 1, 'tooltip'],
+    ['check the company financial status', 'look for upcoming financial events', 1, 'tooltip'],
+    ['see stock performance', 'sign up for financial updates', 1, 'tooltip'],
+    ['need financial reports and filings', 'save reports for later', 1, 'tooltip'],
+    ['look for upcoming financial events','sign up for financial updates', 1, 'tooltip'],
 
-    ['SHS.com', 'look for a job', 2, 'SHS.com to look for a job'],
-    ['look for a job', 'find job listings relevant to me', 1, 'look for a job to find job listings relevant to me'],
-    ['look for a job', 'learn about company mission and values', 1, 'look for a job to learn about company mission and values'],
+    ['SHS.com', 'look for a job', 2, 'tooltip'],
+    ['look for a job', 'find job listings relevant to me', 1, 'tooltip'],
+    ['find job listings relevant to me', 'learn about company mission and values', 1, 'tooltip'],
+    ['find job listings relevant to me', 'apply for a role', 1, 'tooltip'],
+    ['learn about company mission and values', 'apply for a role', 1, 'tooltip'],
 
-    ['SHS.com', 'keep educating myself within my clinical field', 3, 'SHS.com to keep educating myself within my clinical field'],
-    ['keep educating myself within my clinical field', 'find perspectives and findings related to my specialty', 1, 'keep educating myself to find perspectives and findings'],
-    ['keep educating myself within my clinical field', 'attend a trade event', 1, 'keep educating myself to attend a trade event'],
-    ['keep educating myself within my clinical field', 'learn about evolutions with new machinery in my specialty', 1, 'keep educating myself to learn about machinery evolutions'],
+    ['SHS.com', 'keep educating myself within my clinical field', 5, 'tooltip'],
+    ['keep educating myself within my clinical field', 'find perspectives and findings', 2, 'tooltip'],
+    ['keep educating myself within my clinical field', 'learn about evolutions with new machinery', 2, 'tooltip'],
+    ['keep educating myself within my clinical field', 'attend a trade event', 1, 'tooltip'],
+    ['find perspectives and findings', 'look for upcoming / existing webinars', 1, 'tooltip'],
+    ['find perspectives and findings', 'browse whitepapers and reports', 1, 'tooltip'],
+    ['find perspectives and findings', 'browse articles', 2, 'tooltip'],
+    ['learn about evolutions with new machinery','look for upcoming / existing webinars', 1, 'tooltip'],
+    ['learn about evolutions with new machinery', 'browse whitepapers and reports', 1, 'tooltip'],
+    ['attend a trade event','sign up for a newsletter', 1, 'tooltip'],
+    ['look for upcoming / existing webinars','sign up for a webinar', 2, 'tooltip'],
+    ['browse whitepapers and reports','download whitepaper/report', 1, 'tooltip'],
+    ['browse articles','sign up for a newsletter', 1, 'tooltip'],
+    ['browse articles','share with a colleague', 1, 'tooltip'],
 
     ['SHS.com', 'make an informed purchasing decision', 6, 'SHS.com to make an informed purchasing decision'],
     ['make an informed purchasing decision', 'look for product pages', 2, 'make an informed purchasing decision to look for product pages'],
@@ -95,7 +110,7 @@
             ];
 
             var options = {
-                width: 800,
+                width: 1100,
                 height: 3000,
                 sankey: {
                     node: {
@@ -117,7 +132,7 @@
                             fillOpacity: 0.1,
                         },
                     },
-                    iterations: 5000,
+                    iterations: 1000,
                 },
                 tooltip: { isHtml: true }
             };
